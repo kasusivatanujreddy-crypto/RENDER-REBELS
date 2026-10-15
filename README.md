@@ -90,7 +90,7 @@ Computer Vision & Visual Intelligence/
 ### 1. Installation
 Clone the repository and install dependencies across all workspaces:
 ```bash
-npm.cmd install
+npm install
 ```
 
 ### 2. Environment Setup
@@ -102,23 +102,26 @@ cp .env.example .env
 *(Optional)* To enable live Gemini multimodal vision inference:
 ```env
 GEMINI_API_KEY=your_actual_gemini_api_key_here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.8-flash
 ```
 > **Note**: If `GEMINI_API_KEY` is omitted, VisionIQ runs in **Local Benchmark Mode**, analyzing assets using verified inspection fixtures.
 
 ### 3. Run Development Servers
-Start both the backend API and frontend Vite servers concurrently:
+Start both the backend API and frontend Vite servers:
 ```bash
 # Terminal 1: Backend API (Port 4000)
-npm.cmd run dev --workspace=@visioniq/api
+npm run dev:backend
 
 # Terminal 2: Frontend Web App (Port 5173)
-npm.cmd run dev --workspace=@visioniq/web
+npm run dev:frontend
+
+# Or run both concurrently:
+npm run dev
 ```
 
 Access the application in your browser:
 - **Web Application**: [http://localhost:5173](http://localhost:5173)
-- **API Health Check**: [http://localhost:4000/api/v1/health/ready](http://localhost:4000/api/v1/health/ready)
+- **API Health Check**: [http://localhost:4000/api/v1/health](http://localhost:4000/api/v1/health)
 
 ### 4. Run Automated E2E Pipeline Verification
 Execute the automated end-to-end integration test runner:

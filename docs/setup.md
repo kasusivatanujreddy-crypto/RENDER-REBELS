@@ -24,7 +24,7 @@ VisionIQ runs out-of-the-box in local development mode. When you are ready to co
    SUPABASE_ANON_KEY=your-supabase-anon-key
    SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
    ```
-   Restart the backend API (`npm.cmd run dev:api`). VisionIQ will automatically connect to remote Supabase and enforce Row Level Security!
+   Restart the backend API (`npm run dev:backend`). VisionIQ will automatically connect to remote Supabase and enforce Row Level Security!
 
 ---
 
@@ -34,6 +34,21 @@ VisionIQ runs out-of-the-box in local development mode. When you are ready to co
 2. In your `.env`:
    ```env
    GEMINI_API_KEY=AIzaSy...
-   GEMINI_MODEL=gemini-2.5-flash
+   GEMINI_MODEL=gemini-3.8-flash
    ```
-3. Restart the API. The engine badge on the dashboard will display **Gemini 2.5 Flash (Active)**.
+3. Restart the API. The engine badge on the dashboard will display **Gemini 3.8 Flash (Active)**.
+
+---
+
+## Cloud Deployment (Render & Vercel)
+
+### Backend to Render
+1. Connect repository on [Render](https://dashboard.render.com).
+2. Render uses `render.yaml` automatically to deploy `@visioniq/backend`.
+3. Set environment variables (`GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`).
+
+### Frontend to Vercel
+1. Import repository on [Vercel](https://vercel.com/new).
+2. Pre-configured via `vercel.json` (`npm run build:frontend`, output directory `frontend/dist`).
+3. Set environment variables (`VITE_API_BASE_URL` to your Render backend URL, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`).
+
