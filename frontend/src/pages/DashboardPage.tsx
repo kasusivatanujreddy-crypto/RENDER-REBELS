@@ -67,32 +67,36 @@ export const DashboardPage: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Welcome Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-slate-800 shadow-xl">
-        <div className="space-y-1">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 p-7 rounded-2xl glass-panel-elevated relative overflow-hidden">
+        <div className="space-y-2">
           <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-brand-500/20 text-brand-300 border border-brand-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-brand-500/20 text-brand-300 border border-brand-500/40 badge-shimmer">
               Operational Intelligence
             </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center space-x-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Real-Time Engine</span>
+            </span>
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">
-            VisionIQ Quality & Anomaly Operations
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+            <span className="text-gradient-brand">VisionIQ</span> Quality & Anomaly Operations
           </h1>
-          <p className="text-sm text-slate-400">
-            Real-time computer vision analysis, surface anomaly localization, and evidence-grounded review.
+          <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Real-time computer vision analysis, surface anomaly localization, and evidence-grounded human review workflows.
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 shrink-0">
           <Link
             to="/app/live-capture"
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium transition-colors border border-slate-700"
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl btn-glass text-sm font-medium transition-all"
           >
             <Camera className="w-4 h-4 text-brand-400" />
             <span>Camera Capture</span>
           </Link>
           <Link
             to="/app/inspections/new"
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium transition-colors shadow-lg shadow-brand-600/25"
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl btn-glow text-sm font-semibold transition-all shadow-glow-sm"
           >
             <Plus className="w-4 h-4" />
             <span>Start Inspection</span>
@@ -102,61 +106,69 @@ export const DashboardPage: React.FC = () => {
 
       {/* Primary KPI Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-        <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div className="p-5 rounded-2xl glass-card-interactive border-t-2 border-t-brand-500/80">
+          <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
             <span>Total Inspections</span>
-            <ScanEye className="w-4 h-4 text-brand-400" />
+            <div className="p-2 rounded-lg bg-brand-500/10 text-brand-400 border border-brand-500/20">
+              <ScanEye className="w-4 h-4" />
+            </div>
           </div>
-          <div className="mt-3 flex items-baseline space-x-2">
+          <div className="mt-4 flex items-baseline space-x-2">
             <span className="text-3xl font-extrabold text-white tracking-tight">
               {data?.totalInspections || 0}
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-400 font-medium">
               ({data?.completedInspections || 0} completed)
             </span>
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div className="p-5 rounded-2xl glass-card-interactive border-t-2 border-t-emerald-500/80">
+          <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
             <span>Pass Rate</span>
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <CheckCircle2 className="w-4 h-4" />
+            </div>
           </div>
-          <div className="mt-3 flex items-baseline space-x-2">
+          <div className="mt-4 flex items-baseline space-x-2">
             <span className="text-3xl font-extrabold text-emerald-400 tracking-tight">
               {data?.passRate ?? 100}%
             </span>
-            <span className="text-xs text-slate-500">clean yield</span>
+            <span className="text-xs text-slate-400 font-medium">clean yield</span>
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div className="p-5 rounded-2xl glass-card-interactive border-t-2 border-t-rose-500/80">
+          <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
             <span>Defects Detected</span>
-            <Flame className="w-4 h-4 text-rose-400" />
+            <div className="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+              <Flame className="w-4 h-4" />
+            </div>
           </div>
-          <div className="mt-3 flex items-baseline space-x-2">
+          <div className="mt-4 flex items-baseline space-x-2">
             <span className="text-3xl font-extrabold text-rose-400 tracking-tight">
               {data?.totalFindings || 0}
             </span>
-            <span className="text-xs text-rose-400/80">
+            <span className="text-xs text-rose-400/80 font-medium">
               ({severityCounts.critical} critical)
             </span>
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 shadow-md">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+        <div className="p-5 rounded-2xl glass-card-interactive border-t-2 border-t-amber-500/80">
+          <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
             <span>Open Incidents</span>
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
+            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <AlertTriangle className="w-4 h-4" />
+            </div>
           </div>
-          <div className="mt-3 flex items-baseline space-x-2">
+          <div className="mt-4 flex items-baseline space-x-2 justify-between">
             <span className="text-3xl font-extrabold text-amber-400 tracking-tight">
               {data?.openIncidents || 0}
             </span>
-            <Link to="/app/incidents" className="text-xs text-brand-400 hover:underline flex items-center">
-              <span>View</span>
-              <ArrowUpRight className="w-3 h-3 ml-0.5" />
+            <Link to="/app/incidents" className="text-xs text-brand-400 hover:text-brand-300 font-medium flex items-center transition">
+              <span>View Incidents</span>
+              <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
             </Link>
           </div>
         </div>
@@ -165,7 +177,7 @@ export const DashboardPage: React.FC = () => {
       {/* Analytics Visualizations */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Severity Breakdown */}
-        <div className="p-6 rounded-xl bg-slate-900 border border-slate-800 shadow-md flex flex-col">
+        <div className="p-6 rounded-2xl glass-panel flex flex-col">
           <h2 className="text-base font-semibold text-white mb-1">Anomaly Severity Distribution</h2>
           <p className="text-xs text-slate-400 mb-4">
             Defect classification breakdown across all completed inspections.
@@ -221,7 +233,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Category Breakdown */}
-        <div className="p-6 rounded-xl bg-slate-900 border border-slate-800 shadow-md flex flex-col">
+        <div className="p-6 rounded-2xl glass-panel flex flex-col">
           <h2 className="text-base font-semibold text-white mb-1">Defects by Category</h2>
           <p className="text-xs text-slate-400 mb-4">Observed root anomalies categorized by visual type.</p>
 
@@ -247,8 +259,8 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* Recent Inspections Table */}
-      <div className="rounded-xl bg-slate-900 border border-slate-800 shadow-md overflow-hidden">
-        <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+      <div className="rounded-2xl glass-panel overflow-hidden border border-slate-800/80">
+        <div className="p-5 border-b border-slate-800/80 flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Recent Inspection Activity</h2>
             <p className="text-xs text-slate-400">Latest visual intelligence jobs submitted in workspace.</p>
@@ -264,7 +276,7 @@ export const DashboardPage: React.FC = () => {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-850/60 text-slate-400 font-medium uppercase text-[10px] tracking-wider border-b border-slate-800">
+            <thead className="bg-slate-850/60 text-slate-400 font-medium uppercase text-[10px] tracking-wider border-b border-slate-800/80">
               <tr>
                 <th className="px-5 py-3">Inspection Name</th>
                 <th className="px-5 py-3">Status</th>
@@ -284,7 +296,7 @@ export const DashboardPage: React.FC = () => {
                     </td>
                     <td className="px-5 py-3.5">
                       <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${
+                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase ${
                           job.status === "completed"
                             ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                             : job.status === "processing"
@@ -305,13 +317,13 @@ export const DashboardPage: React.FC = () => {
                         {job.priority}
                       </span>
                     </td>
-                    <td className="px-5 py-3.5 text-slate-400">
+                    <td className="px-5 py-3.5 text-slate-400 font-mono text-[11px]">
                       {job.processing_duration_ms ? `${job.processing_duration_ms}ms` : "-"}
                     </td>
                     <td className="px-5 py-3.5 text-right">
                       <Link
                         to={`/app/inspections/${job.id}`}
-                        className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 font-medium text-xs transition-colors"
+                        className="px-3 py-1 rounded-lg btn-glass text-brand-400 hover:text-brand-300 font-medium text-xs transition-all shadow-sm"
                       >
                         Inspect
                       </Link>
