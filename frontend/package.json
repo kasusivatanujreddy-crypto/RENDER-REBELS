@@ -5,9 +5,9 @@
   "type": "module",
   "description": "VisionIQ Frontend Web Application",
   "scripts": {
-    "dev": "node ../node_modules/vite/bin/vite.js",
-    "build": "node ../node_modules/typescript/bin/tsc && node ../node_modules/vite/bin/vite.js build",
-    "preview": "node ../node_modules/vite/bin/vite.js preview"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",

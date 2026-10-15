@@ -4,8 +4,8 @@
   "description": "VisionIQ Backend API Service",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "node ../node_modules/tsx/dist/cli.mjs watch src/server.ts",
-    "build": "node ../node_modules/typescript/bin/tsc",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "dependencies": {

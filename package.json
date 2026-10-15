@@ -12,10 +12,10 @@
     "dev": "npm run dev --workspace=@visioniq/frontend & npm run dev --workspace=@visioniq/backend",
     "dev:frontend": "npm run dev --workspace=@visioniq/frontend",
     "dev:backend": "npm run dev --workspace=@visioniq/backend",
-    "build": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/backend && npm run build --workspace=@visioniq/frontend",
-    "build:frontend": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/frontend",
-    "build:backend": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/backend",
-    "start:backend": "npm run start --workspace=@visioniq/backend",
+    "build": "node ./node_modules/typescript/bin/tsc -p shared/tsconfig.json && node ./node_modules/typescript/bin/tsc -p backend/tsconfig.json && npm run build --workspace=@visioniq/frontend",
+    "build:frontend": "node ./node_modules/typescript/bin/tsc -p shared/tsconfig.json && npm run build --workspace=@visioniq/frontend",
+    "build:backend": "node ./node_modules/typescript/bin/tsc -p shared/tsconfig.json && node ./node_modules/typescript/bin/tsc -p backend/tsconfig.json",
+    "start:backend": "node backend/dist/server.js",
     "test:e2e": "node scripts/test-e2e-pipeline.mjs"
   },
   "keywords": [
@@ -27,5 +27,8 @@
     "supabase"
   ],
   "author": "VisionIQ Engineering Team",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
 }
