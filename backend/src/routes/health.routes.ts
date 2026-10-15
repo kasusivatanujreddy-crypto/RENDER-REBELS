@@ -4,6 +4,18 @@ import { isSupabaseConfigured, isGeminiConfigured } from "../config/index.js";
 
 export const healthRouter = Router();
 
+healthRouter.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    service: "visioniq-backend",
+    uptime: process.uptime(),
+    integrations: {
+      supabase: isSupabaseConfigured ? "connected" : "local_fallback",
+      gemini: isGeminiConfigured ? "configured" : "unconfigured",
+    },
+  });
+});
+
 healthRouter.get("/live", (req, res) => {
   res.json({ status: "alive", uptime: process.uptime() });
 });
