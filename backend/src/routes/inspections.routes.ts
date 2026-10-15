@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { v4 as uuidv4 } from "uuid";
+import { config } from "../config/index.js";
 import { db } from "../services/db.service.js";
 import { storage } from "../services/storage.service.js";
 import { aiVision } from "../services/ai-vision.service.js";
@@ -156,7 +157,7 @@ inspectionsRouter.post("/", async (req, res, next) => {
       priority: validated.priority,
       progress: 0,
       model_provider: "google",
-      model_name: "gemini-2.5-flash",
+      model_name: config.GEMINI_MODEL,
       result_summary: {},
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
