@@ -217,7 +217,7 @@ class DatabaseService {
     if (this.supabase) {
       const { data, error } = await this.supabase
         .from("inspection_jobs")
-        .select("*, visual_assets(original_filename, mime_type, storage_path), inspection_profiles(name, domain)")
+        .select("*, visual_assets:visual_assets!inspection_jobs_asset_id_fkey(original_filename, mime_type, storage_path), inspection_profiles(name, domain)")
         .eq("organization_id", orgId)
         .order("created_at", { ascending: false });
       if (!error && data) return data;
@@ -241,12 +241,12 @@ class DatabaseService {
 
   async getJob(id: string) {
     if (this.supabase) {
-      const { data } = await this.supabase
+      const { data, error } = await this.supabase
         .from("inspection_jobs")
-        .select("*, visual_assets(*), inspection_profiles(*)")
+        .select("*, visual_assets:visual_assets!inspection_jobs_asset_id_fkey(*), inspection_profiles(*)")
         .eq("id", id)
         .single();
-      if (data) return data;
+      if (!error && data) return data;
     }
     const job = this.localStore.inspection_jobs.find((j) => j.id === id);
     if (!job) return null;

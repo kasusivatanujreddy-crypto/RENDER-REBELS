@@ -39,16 +39,15 @@ export class StorageService {
         });
 
       if (!error && data) {
-        // Create 1 hour signed URL
-        const { data: signedData } = await this.supabase.storage
+        const { data: publicData } = this.supabase.storage
           .from(config.STORAGE_BUCKET_ORIGINALS)
-          .createSignedUrl(filename, 3600);
+          .getPublicUrl(filename);
 
         return {
           storagePath: filename,
           sizeBytes: buffer.length,
           sha256,
-          accessUrl: signedData?.signedUrl || `/api/v1/assets/raw/${filename}`,
+          accessUrl: publicData?.publicUrl || `/api/v1/assets/raw/${filename}`,
         };
       }
       console.warn("[Storage] Supabase upload failed, falling back to local storage:", error?.message);

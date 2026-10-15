@@ -16,7 +16,7 @@ const EnvSchema = z.object({
 
   // Gemini
   GEMINI_API_KEY: z.string().optional(),
-  GEMINI_MODEL: z.string().default("gemini-2.5-flash"),
+  GEMINI_MODEL: z.string().default("gemini-3.8-flash"),
 
   // Supabase
   SUPABASE_URL: z.string().optional(),
