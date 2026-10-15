@@ -1,0 +1,25 @@
+# Backend Service .gitignore
+# Environment & Secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# Dependencies & Builds
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Logs & Temp
+logs/
+*.log
+tmp/
+temp/
+uploads/
+data/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

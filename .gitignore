@@ -1,0 +1,204 @@
+# ==============================================================================
+# VisionIQ — Master .gitignore
+# Excludes sensitive secrets, credentials, build outputs, caches, and system files
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Variables & Secret Credentials (CRITICAL - DO NOT PUSH)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+*.env
+**/.env
+**/.env.*
+**/*.env
+
+# Explicitly allow sample/template environment files for team onboarding
+!**/.env.example
+!.env.example
+
+# Private Keys, Certificates, and Service Accounts
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+*service-account*.json
+*credentials*.json
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ------------------------------------------------------------------------------
+# 2. Dependencies & Package Manager Artifacts
+# ------------------------------------------------------------------------------
+node_modules/
+**/node_modules/
+.pnp/
+.pnp.js
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-store/
+
+# ------------------------------------------------------------------------------
+# 3. Production Build Outputs & Compilers
+# ------------------------------------------------------------------------------
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+.next/
+.nuxt/
+.output/
+*.tsbuildinfo
+**/*.tsbuildinfo
+.parcel-cache/
+.vite/
+**/.vite/
+.turbo/
+.rollup.cache/
+
+# ------------------------------------------------------------------------------
+# 4. Logs, Debugging Dumps & Process PID Files
+# ------------------------------------------------------------------------------
+logs/
+**/logs/
+*.log
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------------------------------------------------------
+# 5. Local Databases, File Uploads, Media Buffers & Caches
+# ------------------------------------------------------------------------------
+# Local SQLite, JSON or Mock databases
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-journal
+*.sqlite3-journal
+*.db-journal
+data/
+**/data/
+
+# Temporary media uploads & processed image frames
+uploads/
+**/uploads/
+storage/
+**/storage/
+local-storage/
+**/local-storage/
+tmp/
+**/tmp/
+temp/
+**/temp/
+
+# ------------------------------------------------------------------------------
+# 6. Testing, Coverage & E2E Reports
+# ------------------------------------------------------------------------------
+coverage/
+**/coverage/
+.nyc_output/
+.vitest/
+playwright-report/
+test-results/
+blob-report/
+
+# ------------------------------------------------------------------------------
+# 7. Linter, Formatter & Framework Caches
+# ------------------------------------------------------------------------------
+.cache/
+**/.cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# ------------------------------------------------------------------------------
+# 8. Supabase Local Configuration & State
+# ------------------------------------------------------------------------------
+.supabase/local/
+.supabase/.temp/
+.supabase/generated/
+supabase/.temp/
+supabase/.branches/
+**/.temp/
+
+# ------------------------------------------------------------------------------
+# 9. IDE, Code Editors & Agent Folders
+# ------------------------------------------------------------------------------
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swo
+*.swp
+*.bak
+*.orig
+.gemini/
+**/.gemini/
+.agents/scratch/
+.system_generated/
+
+# ------------------------------------------------------------------------------
+# 10. Operating System System Files
+# ------------------------------------------------------------------------------
+.DS_Store
+**/.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+**/Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ------------------------------------------------------------------------------
+# 11. Python / Computer Vision / ML Weights & Virtual Environments
+# (Safeguard if Python/OpenCV/YOLO/PyTorch pipelines are introduced)
+# ------------------------------------------------------------------------------
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Large Model Weights (Keep large binary models on HuggingFace/Cloud Storage)
+*.onnx
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.h5
+*.tflite
+weights/
+**/weights/

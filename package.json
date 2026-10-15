@@ -1,0 +1,28 @@
+{
+  "name": "visioniq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VisionIQ — AI-Powered Computer Vision & Visual Intelligence Platform",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm.cmd run dev --workspace=@visioniq/frontend & npm.cmd run dev --workspace=@visioniq/backend",
+    "dev:frontend": "npm.cmd run dev --workspace=@visioniq/frontend",
+    "dev:backend": "npm.cmd run dev --workspace=@visioniq/backend",
+    "build": "npm.cmd run build --workspace=@visioniq/shared && npm.cmd run build --workspace=@visioniq/backend && npm.cmd run build --workspace=@visioniq/frontend",
+    "test:e2e": "node scripts/test-e2e-pipeline.mjs"
+  },
+  "keywords": [
+    "computer-vision",
+    "visual-intelligence",
+    "gemini",
+    "anomaly-detection",
+    "quality-inspection",
+    "supabase"
+  ],
+  "author": "VisionIQ Engineering Team",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,23 @@
+# Frontend Web Application .gitignore
+# Environment & Secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# Dependencies & Builds
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Logs & Temp
+logs/
+*.log
+.eslintcache
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
