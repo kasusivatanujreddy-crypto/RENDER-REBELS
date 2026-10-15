@@ -9,10 +9,13 @@
     "shared"
   ],
   "scripts": {
-    "dev": "npm.cmd run dev --workspace=@visioniq/frontend & npm.cmd run dev --workspace=@visioniq/backend",
-    "dev:frontend": "npm.cmd run dev --workspace=@visioniq/frontend",
-    "dev:backend": "npm.cmd run dev --workspace=@visioniq/backend",
-    "build": "npm.cmd run build --workspace=@visioniq/shared && npm.cmd run build --workspace=@visioniq/backend && npm.cmd run build --workspace=@visioniq/frontend",
+    "dev": "npm run dev --workspace=@visioniq/frontend & npm run dev --workspace=@visioniq/backend",
+    "dev:frontend": "npm run dev --workspace=@visioniq/frontend",
+    "dev:backend": "npm run dev --workspace=@visioniq/backend",
+    "build": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/backend && npm run build --workspace=@visioniq/frontend",
+    "build:frontend": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/frontend",
+    "build:backend": "npm run build --workspace=@visioniq/shared && npm run build --workspace=@visioniq/backend",
+    "start:backend": "npm run start --workspace=@visioniq/backend",
     "test:e2e": "node scripts/test-e2e-pipeline.mjs"
   },
   "keywords": [

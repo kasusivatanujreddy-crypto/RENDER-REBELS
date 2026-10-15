@@ -18,7 +18,20 @@ export const app = express();
 
 // Global Middlewares
 app.use(cors({
-  origin: config.CORS_ORIGINS.split(",").map((s) => s.trim()),
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const configured = config.CORS_ORIGINS.split(",").map((s) => s.trim());
+    if (
+      configured.includes("*") ||
+      configured.includes(origin) ||
+      origin.endsWith(".vercel.app") ||
+      origin.includes("localhost") ||
+      origin.includes("127.0.0.1")
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true,
 }));
 
