@@ -45,6 +45,34 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root welcome & portal
+app.get("/", (req, res) => {
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VisionIQ Engine & Workspace</title>
+  <style>
+    body { background: #090d16; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px; max-width: 520px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+    h1 { color: #38bdf8; margin: 0 0 12px 0; font-size: 26px; font-weight: 800; }
+    p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0 0 24px 0; }
+    .btn { display: inline-block; background: linear-gradient(135deg, #0284c7, #0ea5e9); color: white; padding: 12px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.5); }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #34d399; margin-bottom: 20px; padding: 4px 12px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 9999px; }
+    .dot { width: 8px; height: 8px; background: #34d399; border-radius: 50%; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="status"><span class="dot"></span> VisionIQ API Engine Online</div>
+    <h1>VisionIQ Operations</h1>
+    <p>Operational computer vision & AI anomaly detection backend is running. Gemini 3.8 Flash multimodal inference and Supabase PostgreSQL RLS are active.</p>
+    <a href="https://render-rebels.vercel.app/app" class="btn">Open Web Frontend Dashboard &rarr;</a>
+  </div>
+</body>
+</html>`);
+});
+
 // Health checks (no auth required)
 app.use("/api/v1/health", healthRouter);
 
